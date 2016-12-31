@@ -1,0 +1,21 @@
+<div class="ui grid">
+    <div class="row">
+        <div class="sixteen wide column">
+            <hr>
+            <sm-segment>
+                <div class="ui input fluid">
+                    <input placeholder="Procurar" [(ngModel)]="search">
+                </div>
+                <div *ngIf="!haveFriend"><p><h1 class="ui header text-center">Sem amigos :(</h1></div>
+                <div *ngIf="haveFriend">
+                    <div *ngFor="let friend of friends | filter:search:'first_name'; let i = index">
+                        <sm-list class="animated middle aligned selection divided relaxed celled" *ngIf="i < 4">
+                            <sm-item image="{{ friend.img }}" header="{{ friend.first_name }}" *ngIf="friend.situation == 'A'" (click)="addChatBox(friend)"></sm-item>                            
+                        </sm-list>
+                    </div>
+                </div>
+            </sm-segment>
+            <hr>
+        </div>
+    </div>
+</div>

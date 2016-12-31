@@ -1,0 +1,14 @@
+<menu [user]="user"></menu>
+
+<div class="inside main">
+	<div class="box-left">
+		<navbar [user]="user"></navbar>
+	</div>
+	<div class="box-center">
+		<list-friends [allUsers]="allUsers" [friends]="friends"></list-friends>
+	</div>
+	<div class="box-right">
+		<advertisements></advertisements>
+		<chat [friends]="friends" [haveFriend]="haveFriend"></chat>
+	</div>
+</div>

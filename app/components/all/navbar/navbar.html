@@ -1,0 +1,24 @@
+<h5 class="text-title">GRUPOS DE FOTOS</h5>
+<div class="ui vertical pointing menu">
+    <a class="item" *ngFor="let group of user?.groups">
+        {{ group.name }}
+    </a>
+    <div class="item">
+        <div class="ui transparent icon input">
+            <input type="text" placeholder="Procurar grupos...">
+            <i class="search icon"></i>
+        </div>
+    </div>
+</div>
+<h5 class="text-title">EVENTOS</h5>
+<div class="ui vertical pointing menu">
+    <a class="item" *ngFor="let event of user?.events">
+        {{ event.name }}
+    </a>
+    <div class="item">
+        <div class="ui transparent icon input">
+            <input type="text" placeholder="Procurar eventos...">
+            <i class="search icon"></i>
+        </div>
+    </div>
+</div>

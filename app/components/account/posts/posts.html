@@ -1,0 +1,77 @@
+<div *ngIf="!havePost">
+    <div class="main box-feed">
+        <p class="text-center"><i class="massive browser icon"></i></p>
+        <h1 class="text-center">Nenhum post no momento :(</h1>
+    </div>
+</div>
+
+<div *ngIf="havePost">
+    <div class="main box-feed" *ngFor="let post of posts">
+        <div class="ui grid">
+            <div class="row">
+                <div class="two wide column">
+                    <a [routerLink]="['/perfil', post?.id_user]"><img class="ui small image" src="{{ post?.img_user }}"></a>
+                </div>
+                <div class="twelve wide column">
+                    <div class="row">
+                        <div class="fourteen wide column"><h3>{{ post?.first_name_user }}</h3></div>
+                    </div>
+                    <div class="row">
+                        <div class="fourteen wide column"><i class="world icon"></i><span>{{ calculeHourPost(post?.created_at, post?.updated_at) }}</span></div>
+                    </div>
+                </div>
+                <div class="two wide column" *ngIf="post?.id_user == user?.id">
+                    <div class="row">&nbsp;</div>
+                    <div class="row">
+                        <sm-dropdown class="pointing" icon="info circle">
+                            <sm-item>Atualizar Post</sm-item>
+                            <sm-item>Excluir Post</sm-item>
+                        </sm-dropdown>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="sixteen wide column">
+                    <div class="description">{{ post?.description }}</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="sixteen wide column">
+                    <img class="ui fluid image" src="{{ post?.img }}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="eight wide column">
+                    <sm-rating class="massive star" (onRate)="vote($event)" [maxRating]="5" [initialRating]="calculeStars(post?.stars)"></sm-rating>
+                </div>
+                <div class="eight wide column right aligned">
+                    <a (click)="modalCompartilhar.show()"><i class="share link icon"></i> compartilhar</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="two wide column">
+                    <img src="{{ user?.img }}">
+                </div>
+                <div class="fourteen wide column">
+                    <sm-input class="fluid huge" icon="comment" placeholder="Comentar"></sm-input>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<sm-modal class="small" title="Compartilhar" icon="share" #modalCompartilhar>
+	<modal-content>
+        <sm-segment class="raised">
+            <form (ngSubmit)="postFeed()">
+                <div class="textarea textarea-border" contenteditable="true" data-text="Diga algo sobre isso"></div>
+                <sm-button class="black button" icon="browser">Compartilhar</sm-button>
+            </form>
+        </sm-segment>
+    </modal-content>
+    <modal-actions>
+        <div class="ui buttons">
+            <div class="ui button primary" (click)="modalLogin.hide()">Fechar</div>
+        </div>
+    </modal-actions>
+</sm-modal>

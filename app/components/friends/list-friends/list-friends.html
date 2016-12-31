@@ -1,0 +1,83 @@
+<div class="ui two top attached buttons">
+    <div class="ui button" (click)="myFriends = true; searchFriends = false" [ngClass]="{'active': myFriends}">Meus amigos</div>
+    <div class="ui button" (click)="searchFriends = true; myFriends = false" [ngClass]="{'active': searchFriends}">Procurar amigos</div>
+</div>
+<sm-segment class="raised" *ngIf="myFriends">
+    <div class="ui grid container">
+        <div class="row">
+            <div class="sixteen wide column">
+                <div class="ui input fluid">
+                    <input placeholder="Filtre seus amigos" [(ngModel)]="search">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                <div *ngFor="let friend of friends | filter:search:'first_name'">
+                    <sm-list class="animated middle aligned selection divided relaxed celled">
+                        <sm-item image="{{ friend.img }}" header="{{ friend.first_name }}" *ngIf="friend.situation == 'A'" (click)="myFriendsPopup.show($event, {position: 'left center'}); getInfoUser(friend); pendente = false"></sm-item>
+                        <sm-item image="{{ friend.img }}" header="{{ friend.first_name + ' - Pendente' }}" *ngIf="friend.situation == 'P'" class="pendente" (click)="myFriendsPopup.show($event, {position: 'left center'}); getInfoUser(friend); pendente = true"></sm-item>
+                    </sm-list>
+                </div>
+            </div>
+        </div>
+    </div>
+</sm-segment>
+<sm-segment class="raised" *ngIf="searchFriends">
+    <div class="ui grid container">
+        <div class="row">
+            <div class="sixteen wide column">
+                <div class="ui input fluid">
+                    <input placeholder="Procure por amigos" [(ngModel)]="search">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="sixteen wide column">
+                <div *ngFor="let allUser of allUsers | filter:search:'first_name'">
+                    <sm-list class="animated middle aligned selection divided relaxed celled">
+                        <sm-item image="{{ allUser.img }}" header="{{ allUser.first_name }}" (click)="searchFriendsPopup.show($event, {position: 'left center'}); getInfoUser(allUser)"></sm-item>                        
+                    </sm-list>
+                </div>
+            </div>
+        </div>
+    </div>
+</sm-segment>
+
+<sm-popup #myFriendsPopup>
+    <sm-card class="card" *ngIf="pendente">
+        <card-title>{{ user?.first_name }}</card-title>
+        <card-subtitle>{{ user?.last_name }}</card-subtitle>
+        <card-content>
+            <img class="right floated mini ui image" src="{{ user?.img }}">
+            <div class="description">
+                Parece que <a>{{ user?.first_name }}</a> lhe fez um pedido de amizade, aceitarás?
+            </div>
+            <div class="extra content">
+                <div class="ui two buttons">
+                    <div class="ui basic green button">Aceitar</div>
+                    <div class="ui basic red button">Recusar</div>
+                </div>
+            </div>
+        </card-content>
+    </sm-card>
+    <sm-card class="card" *ngIf="!pendente">
+        <card-title>{{ user?.first_name }}</card-title>
+        <card-subtitle>{{ user?.last_name }}</card-subtitle>
+        <card-content>
+            <img class="ui fluid image" src="{{ user?.img }}">
+        </card-content>
+        <sm-button class="bottom attached fluid green basic button" icon="plus" (click)="addFriend(user)">Iniciar chat</sm-button>
+    </sm-card>
+</sm-popup>
+
+<sm-popup #searchFriendsPopup>
+    <sm-card class="card">
+        <card-title>{{ user?.first_name }}</card-title>
+        <card-subtitle>{{ user?.last_name }}</card-subtitle>
+        <card-content>
+            <img class="ui fluid image" src="{{ user?.img }}">
+        </card-content>
+        <sm-button class="bottom attached fluid green basic button" icon="plus" (click)="addFriend(user)">Adicionar aos amigos</sm-button>
+    </sm-card>
+</sm-popup>

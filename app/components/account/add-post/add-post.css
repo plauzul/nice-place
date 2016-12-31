@@ -1,0 +1,13 @@
+.drop-image {
+    width: 50%;
+    height: 200px;
+    border: 1px dashed black;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drop-image-floating {
+    border: 2px solid burlywood;
+}

@@ -1,0 +1,17 @@
+.box {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("app/resources/images/background.png");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.image {
+    margin-top: -100px;
+}
+
+.column {
+    max-width: 450px;
+}

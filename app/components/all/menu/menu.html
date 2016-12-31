@@ -1,0 +1,16 @@
+<sm-menu class="inverted black menu fixed large" logo="app/resources/images/logo.png">
+
+	<div class="item">
+		<sm-input icon="search" placeholder="O que procuras?"></sm-input>
+	</div>
+
+    <a sm-item routerLink="/account" icon="home" routerLinkActive="active">Pagina Inicial</a>
+	<a sm-item routerLink="/friends" icon="user" routerLinkActive="active">Amigos</a>
+    <a sm-item routerLink="/message" icon="talk" routerLinkActive="active">Mensagens</a>
+    <a sm-item routerLink="/notifications" icon="cube" routerLinkActive="active">Notificações</a>
+
+    <sm-menu class="menu right secondary">
+        <a sm-item routerLink="/perfil/{{ user?.id }}" image="{{ user?.img }}" routerLinkActive="active">{{ user?.first_name }}</a>
+        <a sm-item icon="ellipsis vertical"></a>
+    </sm-menu>
+</sm-menu>

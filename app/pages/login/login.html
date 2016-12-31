@@ -1,0 +1,32 @@
+<div class="box">
+	<div class="ui middle aligned center aligned grid">
+    	<div class="column">
+      		<h2 class="ui black image header">
+				<img src="app/resources/images/logo.png" class="image">
+				<div class="content">
+					Faça login para continuar
+				</div>
+			</h2>
+      		<form class="ui form" [formGroup]="formLogin" (ngSubmit)="login()" #formLoginData="ngForm">
+				<sm-segment class="stacked">
+          			<div class="field">
+						<sm-input icon="user" placeholder="E-mail" [control]="formLogin.controls.email"></sm-input>
+          			</div>
+          			<div class="field">
+            			<sm-input icon="lock" placeholder="Senha" [control]="formLogin.controls.password" type="password"></sm-input>
+          			</div>
+					<sm-button class="fluid large black submit">Login</sm-button>
+        		</sm-segment>
+      		</form>
+			<sm-message icon="warning" class="message negative" [ngStyle]="{'display': messageLogin}">
+				<message-header>Erro</message-header>
+				<message-content>
+					Nome de usuario ou senha incorretos.
+				</message-content>
+			</sm-message>
+      		<div class="ui message">
+        		Novo por aqui? <a routerLink="/">Cadastre-se</a>
+      		</div>
+    	</div>
+  	</div>
+</div>

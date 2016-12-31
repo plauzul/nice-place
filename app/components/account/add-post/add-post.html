@@ -1,0 +1,31 @@
+<sm-segment class="raised">
+    <form (ngSubmit)="postFeed(user)">
+        <div class="ui compact menu">
+            <a (click)="modalAddImage.show()" class="item" smDirTooltip="Foto" smDirPosition="top center"><i class="image icon"></i></a>
+            <a class="item" smDirTooltip="Video" smDirPosition="top center"><i class="record icon"></i></a>
+        </div>
+        <div class="textarea textarea-border" contenteditable="true" data-text="A onde você está?" #description></div>
+        <sm-button class="black button" icon="browser">Publicar</sm-button>
+    </form>
+</sm-segment>
+
+<!-- Modal add image -->
+<sm-modal class="small" title="Adicionar Imagem" icon="image" #modalAddImage>
+	<modal-content>
+        <div class="drop-image" [ngClass]="{ 'drop-image-floating': dropImageFloating }" (drop)="dropImage($event)" (dragover)="imageFloating($event)">
+            <div class="ui grid">
+                <div class="row">
+                    <div class="sixteen wide column">
+                        <h1 [ngClass]="{ 'hidden': dropImageFloating }">Solte aqui a imagem</h1>
+                        <img class="ui image fluid" [ngClass]="{ 'hidden': !dropImageFloating }" #imgUpload>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </modal-content>
+    <modal-actions>
+        <div class="ui buttons">
+            <div class="ui button primary" (click)="modalAddImage.hide()">Fechar</div>
+        </div>
+    </modal-actions>
+</sm-modal>

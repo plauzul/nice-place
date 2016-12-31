@@ -1,0 +1,127 @@
+<!-- Sidebar Menu -->
+<sm-sidebar class="ui vertical inverted sidebar menu" #sidebar>
+	<div class="text-center"><img src="app/resources/images/logo.png"></div>
+	<a class="item" (click)="modalLogin.show()">Entrar</a>
+	<a class="item" (click)="modalCadastrar.show()">Cadastrar</a>
+</sm-sidebar>
+
+<!-- Page Contents -->
+<div class="pusher">
+	<div class="ui inverted vertical masthead center aligned segment background">
+
+		<!-- Menu -->
+		<div class="ui container">
+			<div class="ui large secondary inverted pointing menu">
+				<sm-button class="toc item" (click)="sidebar.show({transition: 'overlay'})"><i class="sidebar icon"></i></sm-button>
+				<a class="item"><img src="app/resources/images/logo.png"></a>
+				<div class="right item">
+					<a class="ui inverted button" (click)="modalLogin.show()">Entrar</a>
+					<a class="ui inverted button" (click)="modalCadastrar.show()">Cadastrar</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="ui text container">
+			<h1 class="ui inverted header">
+				Nice Place
+			</h1>
+			<h2>Não compartilhe so momentos especiais mas também lugares.</h2>
+		</div>
+
+	</div>
+
+	<!-- Footer -->
+	<div class="ui inverted vertical footer segment">
+		<div class="ui container">
+			<div class="ui stackable inverted divided equal height stackable grid">
+				<div class="three wide column">
+					<h4 class="ui inverted header">Sobre</h4>
+					<div class="ui inverted link list">
+						<a href="#" class="item">Sitemap</a>
+						<a href="#" class="item">Contacte-nos</a>
+						<a href="#" class="item">Religious Ceremonies</a>
+						<a href="#" class="item">Gazebo Plans</a>
+					</div>
+				</div>
+				<div class="three wide column">
+					<h4 class="ui inverted header">Serviços</h4>
+					<div class="ui inverted link list">
+						<a href="#" class="item">Anuncie</a>
+						<a href="#" class="item">FAQ</a>
+						<a href="#" class="item">How To Access</a>
+						<a href="#" class="item">Favorite X-Men</a>
+					</div>
+				</div>
+				<div class="seven wide column">
+					<h4 class="ui inverted header">Nice Place</h4>
+					<p>Compartilhe locais especiais para você, se divirta no nice place.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal Login -->
+<sm-modal class="small" title="Faça Login" icon="user" #modalLogin>
+	<modal-content>
+    	<form class="ui form" [formGroup]="formLogin" (ngSubmit)="login()" #formLoginData="ngForm">
+			<div class="field">
+				<sm-input label="E-mail" [control]="formLogin.controls.email" placeholder="Entre com o email..."></sm-input>
+			</div>
+			<div class="field">
+				<sm-input label="Senha" [control]="formLogin.controls.password" placeholder="Entre com a senha..." type="password"></sm-input>
+			</div>
+			<sm-button class="primary" [disabled]="!formLogin.valid">Login</sm-button>
+    	</form>
+		<sm-message icon="warning" class="message negative" [ngStyle]="{'display': messageLogin}">
+			<message-header>Erro</message-header>
+			<message-content>
+				Nome de usuario ou senha incorretos.
+			</message-content>
+		</sm-message>
+    </modal-content>
+    <modal-actions>
+        <div class="ui buttons">
+            <div class="ui button primary" (click)="modalLogin.hide()">Fechar</div>
+        </div>
+    </modal-actions>
+</sm-modal>
+
+<!-- Modal Cadastrar -->
+<sm-modal class="small" title="Faça seu cadastro" icon="laptop" #modalCadastrar>
+    <modal-content>
+        <form class="ui form" [formGroup]="formCadastro" (ngSubmit)="cadastro()">
+			<div class="field">
+				<sm-input label="Primeiro Nome" [control]="formCadastro.controls.first_name" placeholder="Entre com o primerio nome..."></sm-input>
+			</div>
+			<div class="field">
+				<sm-input label="Segundo Nome" [control]="formCadastro.controls.last_name" placeholder="Entre com o segundo nome..."></sm-input>
+			</div>
+			<div class="field">
+				<sm-input label="E-mail" [control]="formCadastro.controls.email" placeholder="Entre com o email..."></sm-input>
+			</div>
+			<div class="field">
+				<sm-input label="Senha" [control]="formCadastro.controls.password" placeholder="Entre com a senha..." type="password"></sm-input>
+			</div>
+			<div class="field">
+				<label>Selecione seu sexo</label>
+				<sm-select placeholder="Entre com seu sexo..." [control]="formCadastro.controls.sex">
+					<option value="masculino"><i class="icon male"></i> Masculino</option>
+					<option value="feminino"><i class="icon female"></i> Feminino</option>
+				</sm-select>
+			</div>
+			<sm-button class="primary" [disabled]="!formCadastro.valid">Cadastro</sm-button>
+    	</form>
+		<sm-message icon="warning" class="message positive" [ngStyle]="{'display': messageCadastro}">
+			<message-header>Ok</message-header>
+			<message-content>
+				Cadastro realizado com sucesso.
+			</message-content>
+		</sm-message>
+    </modal-content>
+    <modal-actions>
+        <div class="ui buttons">
+            <div class="ui button primary" (click)="modalCadastrar.hide()">Fechar</div>
+        </div>
+    </modal-actions>
+</sm-modal>
