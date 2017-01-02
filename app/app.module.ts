@@ -28,6 +28,7 @@ import { MenuComponent } from './components/all/menu/menu.component';
 import { AdvertisementsComponent } from './components/all/advertisements/advertisements.component';
 import { NavbarComponent } from './components/all/navbar/navbar.component';
 import { ListFriendsComponent } from './components/friends/list-friends/list-friends.component';
+import { ChatBoxComponent } from './components/all/chat-box/chat-box.component';
 
 // Providers
 import { UserService } from './services/user.service';
@@ -65,7 +66,8 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
     PerfilComponent,
     AdvertisementsComponent,
     NavbarComponent,
-    ListFriendsComponent
+    ListFriendsComponent,
+    ChatBoxComponent
   ],
   providers: [
     UserService,

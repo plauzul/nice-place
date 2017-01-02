@@ -9,11 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
+var user_model_1 = require("../../../models/user.model");
 var ChatBoxComponent = (function () {
     function ChatBoxComponent() {
     }
+    ChatBoxComponent.prototype.closeChat = function () {
+        this.friend = undefined;
+    };
     return ChatBoxComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", user_model_1.UserModel)
+], ChatBoxComponent.prototype, "friend", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", user_model_1.UserModel)
+], ChatBoxComponent.prototype, "user", void 0);
 ChatBoxComponent = __decorate([
     core_1.Component({
         moduleId: module.id,

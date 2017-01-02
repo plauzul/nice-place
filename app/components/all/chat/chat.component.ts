@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { FriendModel } from '../../../models/friend.model';
 
 @Component({
@@ -12,9 +12,10 @@ export class ChatComponent {
 
     @Input() friends: FriendModel[];
     @Input() haveFriend: boolean;
+    @Output() chatUpdate = new EventEmitter();
     search: string;
 
     addChatBox(friend: FriendModel) {
-        console.log(friend);
+        this.chatUpdate.emit(friend);
     }
 }

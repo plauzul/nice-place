@@ -35,7 +35,8 @@ var BaseService = (function () {
         return options;
     };
     BaseService.prototype.addHeadersForApi = function () {
-        var headers = new http_1.Headers({ 'Authorization': "Bearer " + sessionStorage.getItem('token') });
+        // let headers = new Headers({ 'Authorization': `Bearer ${sessionStorage.getItem('token')}` });
+        var headers = new http_1.Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         var options = new http_1.RequestOptions({ headers: headers });
         return options;
     };

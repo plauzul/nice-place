@@ -23,6 +23,7 @@
     width: 60%;
     height: 100%;
     padding: 5%;
+    display: block;
 }
 
 .box-right {
@@ -83,4 +84,12 @@
 .text-title {
     padding-left: 10px;
     border-left: 2px solid #cccccc;
+}
+
+.chat-open {
+    display: block;
+}
+
+.chat-close {
+    display: none;
 }

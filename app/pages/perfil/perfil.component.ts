@@ -16,6 +16,7 @@ export class PerfilComponent {
     user: UserModel;
     friends: FriendModel[];
     haveFriend: boolean;
+    friend: UserModel;
 
     constructor(private userService: UserService, private friendService: FriendService) {}
 

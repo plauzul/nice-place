@@ -35,6 +35,7 @@ var menu_component_1 = require("./components/all/menu/menu.component");
 var advertisements_component_1 = require("./components/all/advertisements/advertisements.component");
 var navbar_component_1 = require("./components/all/navbar/navbar.component");
 var list_friends_component_1 = require("./components/friends/list-friends/list-friends.component");
+var chat_box_component_1 = require("./components/all/chat-box/chat-box.component");
 // Providers
 var user_service_1 = require("./services/user.service");
 var authentication_service_1 = require("./services/authentication.service");
@@ -75,7 +76,8 @@ AppModule = __decorate([
             perfil_component_1.PerfilComponent,
             advertisements_component_1.AdvertisementsComponent,
             navbar_component_1.NavbarComponent,
-            list_friends_component_1.ListFriendsComponent
+            list_friends_component_1.ListFriendsComponent,
+            chat_box_component_1.ChatBoxComponent
         ],
         providers: [
             user_service_1.UserService,

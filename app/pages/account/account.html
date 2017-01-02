@@ -5,11 +5,12 @@
 		<navbar [user]="user"></navbar>
 	</div>
 	<div class="box-center">
+		<chat-box [user]="user" [friend]="friend"></chat-box>
 		<add-post [user]="user"></add-post>
 		<posts [user]="user" [posts]="posts" [havePost]="havePost"></posts>
 	</div>
 	<div class="box-right">
 		<advertisements></advertisements>
-		<chat [friends]="friends" [haveFriend]="haveFriend"></chat>
+		<chat [friends]="friends" [haveFriend]="haveFriend" (chatUpdate)="friend = $event"></chat>
 	</div>
 </div>

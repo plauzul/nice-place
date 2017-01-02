@@ -18,6 +18,7 @@ export class FriendsComponent implements OnInit {
     haveFriend: boolean;
     search: string;
     allUsers: UserModel[];
+    friend: FriendModel;
 
     constructor(private userService: UserService, private friendService: FriendService) {}
 

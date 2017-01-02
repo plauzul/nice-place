@@ -36,7 +36,7 @@
             <div class="sixteen wide column">
                 <div *ngFor="let allUser of allUsers | filter:search:'first_name'">
                     <sm-list class="animated middle aligned selection divided relaxed celled">
-                        <sm-item image="{{ allUser.img }}" header="{{ allUser.first_name }}" (click)="searchFriendsPopup.show($event, {position: 'left center'}); getInfoUser(allUser)"></sm-item>                        
+                        <sm-item image="{{ allUser.img }}" header="{{ allUser.first_name }}" (click)="searchFriendsPopup.show($event, {position: 'left center'}); getInfoUser(allUser)" *ngIf="allUser.id != user.id"></sm-item>                        
                     </sm-list>
                 </div>
             </div>
@@ -46,12 +46,12 @@
 
 <sm-popup #myFriendsPopup>
     <sm-card class="card" *ngIf="pendente">
-        <card-title>{{ user?.first_name }}</card-title>
-        <card-subtitle>{{ user?.last_name }}</card-subtitle>
+        <card-title>{{ otherUser?.first_name }}</card-title>
+        <card-subtitle>{{ otherUser?.last_name }}</card-subtitle>
         <card-content>
-            <img class="right floated mini ui image" src="{{ user?.img }}">
+            <img class="right floated mini ui image" src="{{ otherUser?.img }}">
             <div class="description">
-                Parece que <a>{{ user?.first_name }}</a> lhe fez um pedido de amizade, aceitarás?
+                Parece que <a>{{ otherUser?.first_name }}</a> lhe fez um pedido de amizade, aceitarás?
             </div>
             <div class="extra content">
                 <div class="ui two buttons">
@@ -62,22 +62,22 @@
         </card-content>
     </sm-card>
     <sm-card class="card" *ngIf="!pendente">
-        <card-title>{{ user?.first_name }}</card-title>
-        <card-subtitle>{{ user?.last_name }}</card-subtitle>
+        <card-title>{{ otherUser?.first_name }}</card-title>
+        <card-subtitle>{{ otherUser?.last_name }}</card-subtitle>
         <card-content>
-            <img class="ui fluid image" src="{{ user?.img }}">
+            <img class="ui fluid image" src="{{ otherUser?.img }}">
         </card-content>
-        <sm-button class="bottom attached fluid green basic button" icon="plus" (click)="addFriend(user)">Iniciar chat</sm-button>
+        <sm-button class="bottom attached fluid green basic button" icon="plus">Iniciar chat</sm-button>
     </sm-card>
 </sm-popup>
 
 <sm-popup #searchFriendsPopup>
     <sm-card class="card">
-        <card-title>{{ user?.first_name }}</card-title>
-        <card-subtitle>{{ user?.last_name }}</card-subtitle>
+        <card-title>{{ otherUser?.first_name }}</card-title>
+        <card-subtitle>{{ otherUser?.last_name }}</card-subtitle>
         <card-content>
-            <img class="ui fluid image" src="{{ user?.img }}">
+            <img class="ui fluid image" src="{{ otherUser?.img }}">
         </card-content>
-        <sm-button class="bottom attached fluid green basic button" icon="plus" (click)="addFriend(user)">Adicionar aos amigos</sm-button>
+        <sm-button class="bottom attached fluid green basic button" icon="plus" (click)="addFriend(otherUser)">Adicionar aos amigos</sm-button>
     </sm-card>
 </sm-popup>

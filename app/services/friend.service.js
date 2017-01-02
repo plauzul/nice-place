@@ -28,6 +28,11 @@ var FriendService = (function (_super) {
             .map(this.extrairDados)
             .catch(this.processarErros);
     };
+    FriendService.prototype.addFriend = function (id_user, id_friend) {
+        return this.http.post(this.urlApi + "friend?", this.jsonToQueryString({ id_user: id_user, id_friend: id_friend, situation: 'P' }), this.addHeadersForApi())
+            .map(this.extrairDados)
+            .catch(this.processarErros);
+    };
     return FriendService;
 }(base_service_1.BaseService));
 FriendService = __decorate([

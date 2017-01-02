@@ -91,26 +91,50 @@
 <sm-modal class="small" title="Faça seu cadastro" icon="laptop" #modalCadastrar>
     <modal-content>
         <form class="ui form" [formGroup]="formCadastro" (ngSubmit)="cadastro()">
-			<div class="field">
-				<sm-input label="Primeiro Nome" [control]="formCadastro.controls.first_name" placeholder="Entre com o primerio nome..."></sm-input>
+			<div class="ui grid">
+				<div class="row">
+					<div class="eight wide column">
+						<div class="field">
+							<sm-input label="Primeiro Nome" [control]="formCadastro.controls.first_name" placeholder="Entre com o primerio nome..."></sm-input>
+						</div>
+					</div>
+					<div class="eight wide column">
+						<div class="field">
+							<sm-input label="Segundo Nome" [control]="formCadastro.controls.last_name" placeholder="Entre com o segundo nome..."></sm-input>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="sixteen wide column">
+						<div class="field">
+							<sm-input label="E-mail" [control]="formCadastro.controls.email" placeholder="Entre com o email..."></sm-input>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="sixteen wide column">
+						<div class="field">
+							<sm-input label="Senha" [control]="formCadastro.controls.password" placeholder="Entre com a senha..." type="password"></sm-input>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="sixteen wide column">
+						<div class="field">
+							<label>Selecione seu sexo</label>
+							<sm-select placeholder="Entre com seu sexo..." [control]="formCadastro.controls.sex">
+								<option value="masculino"><i class="icon male"></i> Masculino</option>
+								<option value="feminino"><i class="icon female"></i> Feminino</option>
+							</sm-select>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="sixteen wide column">
+						<sm-button class="primary" [disabled]="!formCadastro.valid">Cadastro</sm-button>
+					</div>
+				</div>
 			</div>
-			<div class="field">
-				<sm-input label="Segundo Nome" [control]="formCadastro.controls.last_name" placeholder="Entre com o segundo nome..."></sm-input>
-			</div>
-			<div class="field">
-				<sm-input label="E-mail" [control]="formCadastro.controls.email" placeholder="Entre com o email..."></sm-input>
-			</div>
-			<div class="field">
-				<sm-input label="Senha" [control]="formCadastro.controls.password" placeholder="Entre com a senha..." type="password"></sm-input>
-			</div>
-			<div class="field">
-				<label>Selecione seu sexo</label>
-				<sm-select placeholder="Entre com seu sexo..." [control]="formCadastro.controls.sex">
-					<option value="masculino"><i class="icon male"></i> Masculino</option>
-					<option value="feminino"><i class="icon female"></i> Feminino</option>
-				</sm-select>
-			</div>
-			<sm-button class="primary" [disabled]="!formCadastro.valid">Cadastro</sm-button>
     	</form>
 		<sm-message icon="warning" class="message positive" [ngStyle]="{'display': messageCadastro}">
 			<message-header>Ok</message-header>

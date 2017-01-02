@@ -20,6 +20,7 @@ export class AccountComponent implements OnInit {
     friends: FriendModel[];
     havePost: boolean;
     haveFriend: boolean;
+    friend: UserModel;
 
     constructor(private userService: UserService, private postsService: PostsService, private friendService: FriendService) {}
 

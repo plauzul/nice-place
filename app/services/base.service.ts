@@ -39,7 +39,8 @@ export class BaseService {
     }
 
     protected addHeadersForApi() {
-        let headers = new Headers({ 'Authorization': `Bearer ${sessionStorage.getItem('token')}` });
+        // let headers = new Headers({ 'Authorization': `Bearer ${sessionStorage.getItem('token')}` });
+        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: headers });
 
         return options;

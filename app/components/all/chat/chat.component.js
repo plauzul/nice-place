@@ -11,9 +11,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var ChatComponent = (function () {
     function ChatComponent() {
+        this.chatUpdate = new core_1.EventEmitter();
     }
     ChatComponent.prototype.addChatBox = function (friend) {
-        console.log(friend);
+        this.chatUpdate.emit(friend);
     };
     return ChatComponent;
 }());
@@ -25,6 +26,10 @@ __decorate([
     core_1.Input(),
     __metadata("design:type", Boolean)
 ], ChatComponent.prototype, "haveFriend", void 0);
+__decorate([
+    core_1.Output(),
+    __metadata("design:type", Object)
+], ChatComponent.prototype, "chatUpdate", void 0);
 ChatComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
