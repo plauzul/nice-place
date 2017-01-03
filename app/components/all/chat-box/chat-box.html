@@ -1,34 +1,18 @@
-<div class="chat-box" [ngClass]="{'chat-close': !friend}">
+<div class="chat-box" [ngClass]="{'hidden': !friend}">
     <div class="header">
-        <span>{{ friend?.first_name || "Ninguem" }}</span>
+        <span>{{ friend?.first_name }}</span>
         <div class="tools">
-            <sm-button class="inverted mini circular" icon="settings"></sm-button>
             <sm-button class="inverted mini circular" icon="close" (click)="closeChat()"></sm-button>
         </div>
     </div>
     <div class="content">
         <div class="ui grid container">
             <div class="row">
-                <div class="sixteen wide column margin">
-                    <div class="bubble-left">Oi ^.^</div>
-                </div>
-                <div class="sixteen wide column margin">
-                    <div class="bubble-right">Oiiiii</div>
-                </div>
-                <div class="sixteen wide column margin">
-                    <div class="bubble-left">Como foi suas ferias?</div>
-                </div>
-                <div class="sixteen wide column margin">
-                    <div class="bubble-right">Foram divinais</div>
-                </div>
-                <div class="sixteen wide column margin">
-                    <div class="bubble-left">Legal</div>
-                </div>
-                <div class="sixteen wide column margin">
-                    <div class="bubble-right">:)</div>
+                <div class="sixteen wide column margin" *ngFor="let message of messages">
+                    <div class="bubble-right">{{ message }}</div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="footer" contenteditable="true" data-text="Escreva uma mensagem"></div>
+    <div class="footer" contenteditable="true" data-text="Escreva uma mensagem" (keyup)="sendMessage($event)" #message></div>
 </div>

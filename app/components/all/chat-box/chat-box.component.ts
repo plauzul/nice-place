@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { UserModel } from '../../../models/user.model';
 
 @Component({
@@ -12,8 +12,19 @@ export class ChatBoxComponent {
 
     @Input() friend: UserModel;
     @Input() user: UserModel;
+    @ViewChild('message') message;
+    messages: string[] = [];
     
     closeChat() {
         this.friend = undefined;
+    }
+
+    sendMessage(event: any) {
+        if(event.keyCode == 13) {
+            this.messages.reverse();
+            this.messages.push(this.message.nativeElement.innerText);
+            this.messages.reverse();
+            this.message.nativeElement.innerText = "";
+        }
     }
 }

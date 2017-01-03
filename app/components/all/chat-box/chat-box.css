@@ -33,7 +33,7 @@
 
 .chat-box .content .bubble-left {
     position: relative;
-    max-width: 330px;
+    max-width: 100%;
     min-height: 15px;
     padding: 10px;
     background: #d3cbcb;
@@ -59,7 +59,7 @@
 
 .chat-box .content .bubble-right {
     position: relative;
-    max-width: 330px;
+    max-width: 100%;
     word-wrap: break-word;
     min-height: 15px;
     padding: 10px;

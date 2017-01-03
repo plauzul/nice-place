@@ -12,9 +12,18 @@ var core_1 = require("@angular/core");
 var user_model_1 = require("../../../models/user.model");
 var ChatBoxComponent = (function () {
     function ChatBoxComponent() {
+        this.messages = [];
     }
     ChatBoxComponent.prototype.closeChat = function () {
         this.friend = undefined;
+    };
+    ChatBoxComponent.prototype.sendMessage = function (event) {
+        if (event.keyCode == 13) {
+            this.messages.reverse();
+            this.messages.push(this.message.nativeElement.innerText);
+            this.messages.reverse();
+            this.message.nativeElement.innerText = "";
+        }
     };
     return ChatBoxComponent;
 }());
@@ -26,6 +35,10 @@ __decorate([
     core_1.Input(),
     __metadata("design:type", user_model_1.UserModel)
 ], ChatBoxComponent.prototype, "user", void 0);
+__decorate([
+    core_1.ViewChild('message'),
+    __metadata("design:type", Object)
+], ChatBoxComponent.prototype, "message", void 0);
 ChatBoxComponent = __decorate([
     core_1.Component({
         moduleId: module.id,

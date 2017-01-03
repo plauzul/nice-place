@@ -85,11 +85,3 @@
     padding-left: 10px;
     border-left: 2px solid #cccccc;
 }
-
-.chat-open {
-    display: block;
-}
-
-.chat-close {
-    display: none;
-}
