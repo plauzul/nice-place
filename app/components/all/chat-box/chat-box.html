@@ -1,5 +1,5 @@
-<div class="chat-box" [ngClass]="{'hidden': !friend}">
-    <div class="header">
+<div class="chat-box" [ngClass]="{'hidden': !friend, 'min-chat-box': minChatBox}">
+    <div class="header" (click)="minChatBox = !minChatBox">
         <span>{{ friend?.first_name }}</span>
         <div class="tools">
             <sm-button class="inverted mini circular" icon="close" (click)="closeChat()"></sm-button>

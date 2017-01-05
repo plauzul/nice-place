@@ -14,6 +14,7 @@ export class ChatBoxComponent {
     @Input() user: UserModel;
     @ViewChild('message') message;
     messages: string[] = [];
+    minChatBox: boolean;
     
     closeChat() {
         this.friend = undefined;

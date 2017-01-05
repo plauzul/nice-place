@@ -27,7 +27,8 @@
       // other libraries
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
-      'ng-semantic':               'npm:ng-semantic'
+      'ng-semantic':               'npm:ng-semantic',
+      'angularfire2':              'npm:angularfire2'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -36,11 +37,15 @@
         defaultExtension: 'js'
       },
       rxjs: {
-        defaultExtension: 'js'
+      	defaultExtension: 'js'
       },
       'ng-semantic': {
-          main: 'ng-semantic',
-          defaultExtension: 'js'
+        main: 'ng-semantic',
+        defaultExtension: 'js'
+      },
+      'angularfire2': {
+        main: 'angularfire2',
+        defaultExtension: 'js'
       }
     }
   });
